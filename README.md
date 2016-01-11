@@ -1,4 +1,4 @@
-DotA Replay Manager 3.04
+DotA Replay Manager 3.04b
 
 http://www.playdota.com/forums/showthread.php?p=110886
 http://www.rivsoft.net/projects/dotareplay/
