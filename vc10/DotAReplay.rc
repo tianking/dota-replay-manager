@@ -1,0 +1,336 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// ∂Ì”Ô(∂Ì¬ﬁÀπ) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // ∂Ì”Ô(∂Ì¬ﬁÀπ) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// ”¢”Ô(√¿π˙) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAIN                ICON                    "..\\res\\idr_main.ico"
+IDI_PLAY                ICON                    "..\\res\\play.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,4,1
+ PRODUCTVERSION 3,0,4,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "RiV Soft"
+            VALUE "FileDescription", "DotA Replay Manager"
+            VALUE "FileVersion", "3.04b"
+            VALUE "InternalName", "DotAReplay"
+            VALUE "LegalCopyright", "d07.RiV, 24.09.2012. http://rivsoft.narod.ru/."
+            VALUE "OriginalFilename", "DotAReplay.exe"
+            VALUE "ProductName", "DotA Replay Manager"
+            VALUE "ProductVersion", "3.04b"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_SPLITVERT           CURSOR                  "..\\res\\vsplit.cur"
+IDC_ELFHAND             CURSOR                  "..\\res\\sentinel.cur"
+IDC_ZOOM_IN             CURSOR                  "..\\res\\zoomin.cur"
+IDC_ZOOM_OUT            CURSOR                  "..\\res\\zoom_out.cur"
+IDC_HAND_MOVE           CURSOR                  "..\\res\\hmove.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TEXTPROMPT DIALOGEX 0, 0, 278, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,34,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,221,34,50,14
+    EDITTEXT        IDC_INPUT,7,16,264,14,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_PROMPT,7,4,264,8
+END
+
+IDD_SCRIPTGEN DIALOGEX 0, 0, 338, 154
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Generate script"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,133,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,281,133,50,14
+    COMBOBOX        IDC_SCRIPTMODE,30,7,87,57,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Mode:",IDC_STATIC,7,9,21,8
+    COMBOBOX        IDC_SCRIPTICONS,146,7,81,65,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Icons:",IDC_STATIC,122,9,21,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,22,324,1
+    CONTROL         "Date/time",IDC_SCRIPT_DATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,26,51,10
+    CONTROL         "Patch",IDC_SCRIPT_PATCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,26,51,10
+    CONTROL         "Map",IDC_SCRIPT_MAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,26,51,10
+    CONTROL         "Game name",IDC_SCRIPT_NAME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,26,51,10
+    CONTROL         "Game mode",IDC_SCRIPT_MODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,26,51,10
+    CONTROL         "Host",IDC_SCRIPT_HOST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,282,26,49,10
+    CONTROL         "Saver",IDC_SCRIPT_SAVER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,38,51,10
+    CONTROL         "Length",IDC_SCRIPT_LENGTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,38,51,10
+    CONTROL         "Players",IDC_SCRIPT_PLAYERS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,38,51,10
+    CONTROL         "Score",IDC_SCRIPT_SCORE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,38,51,10
+    CONTROL         "Winner",IDC_SCRIPT_WINNER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,282,38,49,10
+    CONTROL         "Observers",IDC_SCRIPT_OBSERVERS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,38,51,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,51,323,1
+    CONTROL         "Player list",IDC_SCRIPT_PLAYER_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,56,51,10
+    CONTROL         "Colored",IDC_SCRIPT_PLAYER_COLORED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,56,51,10
+    CONTROL         "Level",IDC_SCRIPT_PLAYER_LEVEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,68,51,10
+    CONTROL         "Kill/death",IDC_SCRIPT_PLAYER_KD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,68,51,10
+    CONTROL         "Creep/deny",IDC_SCRIPT_PLAYER_CS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,68,51,10
+    CONTROL         "Gold",IDC_SCRIPT_PLAYER_GOLD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,68,51,10
+    CONTROL         "Lane",IDC_SCRIPT_PLAYER_LANE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,68,51,10
+    CONTROL         "APM",IDC_SCRIPT_PLAYER_APM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,282,68,49,10
+    CONTROL         "Left",IDC_SCRIPT_PLAYER_LEFT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,81,55,10
+    CONTROL         "Items",IDC_SCRIPT_PLAYER_ITEMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,81,55,10
+    CONTROL         "Group by lane",IDC_SCRIPT_PLAYER_BYLANE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,56,83,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,94,321,1
+    LTEXT           "Detailed report:",IDC_STATIC,7,98,52,8
+    CONTROL         "Sentinel",IDC_SCRIPT_DETAIL_SENTINEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,108,51,10
+    CONTROL         "Scourge",IDC_SCRIPT_DETAIL_SCOURGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,108,51,10
+    CONTROL         "Saver",IDC_SCRIPT_DETAIL_SAVER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,108,51,10
+    CONTROL         "Skill build",IDC_SCRIPT_DETAIL_SKILLBUILD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,120,51,10
+    CONTROL         "Skill time",IDC_SCRIPT_DETAIL_SKILLTIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,120,43,10
+    CONTROL         "Item build",IDC_SCRIPT_DETAIL_ITEMBUILD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,120,51,10
+    CONTROL         "Item time",IDC_SCRIPT_DETAIL_ITEMTIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,120,51,10
+    CONTROL         "Item cost",IDC_SCRIPT_DETAIL_ITEMCOST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,227,120,49,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDVERT,112,120,1,9
+END
+
+IDD_BATCHDLG DIALOGEX 0, 0, 238, 52
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Batch copy"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,181,31,50,14
+    LTEXT           "From:",IDC_FROMFILE,7,7,224,8,SS_PATHELLIPSIS
+    LTEXT           "To:",IDC_TOFILE,15,18,216,8,SS_PATHELLIPSIS
+    CONTROL         "",IDC_BATCHPROGRESS,"msctls_progress32",0x0,7,31,170,14
+END
+
+IDD_UPDATEDLG DIALOGEX 0, 0, 360, 210
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Updates"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Open webpage",IDC_OPENWEB,7,189,110,14
+    PUSHBUTTON      "Open playdota.com thread",IDC_OPENFORUM,125,189,110,14
+    PUSHBUTTON      "Close",IDCANCEL,243,189,110,14
+    EDITTEXT        IDC_UPDATEINFO,7,7,346,161,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+END
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 44
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About DotAReplay"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            "",IDC_APPICON,7,6,21,20
+    LTEXT           "DotAReplay",IDC_APPINFO,45,10,119,8,SS_NOPREFIX | NOT WS_GROUP
+    LTEXT           "By d07.RiV, http://rivsoft.narod.ru/",IDC_STATIC,45,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,6,50,14,WS_GROUP
+    PUSHBUTTON      "Website",IDC_OPENWEB,178,23,50,14
+END
+
+IDD_NODATA DIALOGEX 0, 0, 200, 124
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "No data"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "No data for version:",IDC_NODATA_TIP,7,8,186,8
+    CONTROL         "Load data from map used in replay",IDC_LOADMAPAUTO,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,19,127,10
+    CONTROL         "Remember this choice",IDC_ALWAYSLOAD,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,17,31,129,10
+    CONTROL         "Load data from the following map:",IDC_LOADMAP,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,43,125,10
+    EDITTEXT        IDC_MAPTOLOAD,17,55,122,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_MAPBROWSE,143,55,50,12
+    CONTROL         "Copy data from version",IDC_COPYVERSION,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,7,73,91,10
+    COMBOBOX        IDC_VERSIONLIST,98,71,59,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Save data for this version",IDC_SAVEDATA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,89,99,10
+    DEFPUSHBUTTON   "OK",IDOK,7,103,50,14
+    PUSHBUTTON      "Cancel",2,143,103,50,14
+END
+
+IDD_CHATFILTERS DIALOGEX 0, 0, 287, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chat filters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Chat messages",IDC_MSG_CHAT,"Button",BS_3STATE | WS_TABSTOP,7,7,65,10
+    CONTROL         "All chat",IDC_MSG_ALLCHAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,22,39,10
+    CONTROL         "Ally chat",IDC_MSG_ALLYCHAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,33,43,10
+    CONTROL         "Observer chat",IDC_MSG_OBSERVERCHAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,44,62,10
+    CONTROL         "Private chat",IDC_MSG_PRIVATECHAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,55,55,10
+    CONTROL         "Chat commands",IDC_MSG_CHATCMD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,66,69,10
+    CONTROL         "Game messages",IDC_MSG_GAME,"Button",BS_3STATE | WS_TABSTOP,118,7,67,10
+    CONTROL         "Leaving players",IDC_MSG_LEAVERS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,22,66,10
+    CONTROL         "Game pauses",IDC_MSG_PAUSES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,33,59,10
+    CONTROL         "Control sharing",IDC_MSG_CONTROL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,44,65,10
+    CONTROL         "Hero kills",IDC_MSG_HEROKILLS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,55,44,10
+    CONTROL         "Tower kills",IDC_MSG_TOWERKILLS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,66,49,10
+    CONTROL         "Rax kills",IDC_MSG_RAXKILLS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,77,41,10
+    CONTROL         "Courier kills",IDC_MSG_COURIERKILLS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,118,88,52,10
+    CONTROL         "Tree/throne health",IDC_MSG_TREEHEALTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,22,77,10
+    CONTROL         "Roshan",IDC_MSG_ROSHAN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,33,40,10
+    CONTROL         "Aegis",IDC_MSG_AEGIS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,44,33,10
+    CONTROL         "Game mode",IDC_MSG_GAMEMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,55,53,10
+    CONTROL         "Runes",IDC_MSG_RUNES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,66,36,10
+    CONTROL         "Captain picks/bans",IDC_MSG_PICKSBANS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,77,76,10
+    CONTROL         "Fast kills",IDC_MSG_FASTKILLS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,203,88,43,10
+    CONTROL         "Sprees",IDC_MSG_SPREES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,204,99,38,10
+    DEFPUSHBUTTON   "OK",IDOK,7,111,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,230,111,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_TEXTPROMPT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 271
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SCRIPTGEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 331
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_BATCHDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 231
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 45
+    END
+
+    IDD_UPDATEDLG, DIALOG
+    BEGIN
+    END
+
+    IDD_NODATA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 117
+    END
+
+    IDD_CHATFILTERS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 280
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // ”¢”Ô(√¿π˙) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

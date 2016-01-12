@@ -20,163 +20,196 @@ CRITICAL_SECTION UpdateDialog::lock;
 
 INT_PTR CALLBACK UpdateDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-  switch (message)
-  {
-  case WM_INITDIALOG:
-    instance = hDlg;
-    check(true);
-    // intentionally skip
-  case WM_UPDATEVERSION:
-    EnterCriticalSection(&lock);
-    SetDlgItemText(hDlg, IDC_UPDATEINFO, changelog);
-    LeaveCriticalSection(&lock);
-    return TRUE;
-  case WM_COMMAND:
-    switch (LOWORD(wParam))
-    {
-    case IDC_OPENWEB:
-      OpenURL(projectURL);
-      return TRUE;
-    case IDC_OPENFORUM:
-      OpenURL(forumURL);
-      return TRUE;
-    case IDOK:
-    case IDCANCEL:
-      instance = NULL;
-      EndDialog(hDlg, LOWORD(wParam));
-      return TRUE;
-    }
-    break;
-  }
-  return FALSE;
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		instance = hDlg;
+		check(true);
+		// intentionally skip
+	case WM_UPDATEVERSION:
+		EnterCriticalSection(&lock);
+		SetDlgItemText(hDlg, IDC_UPDATEINFO, changelog);
+		LeaveCriticalSection(&lock);
+		return TRUE;
+	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case IDC_OPENWEB:
+			OpenURL(projectURL);
+			return TRUE;
+		case IDC_OPENFORUM:
+			OpenURL(forumURL);
+			return TRUE;
+		case IDOK:
+		case IDCANCEL:
+			instance = NULL;
+			EndDialog(hDlg, LOWORD(wParam));
+			return TRUE;
+		}
+		break;
+	}
+	return FALSE;
 }
 DWORD WINAPI UpdateDialog::ThreadProc(LPVOID param)
 {
-  File* verFile = File::openURL(versionURL);
-  String text = "";
-  if (verFile)
-  {
-    text = verFile->gets();
-    delete verFile;
-  }
-  if (text.isEmpty())
-  {
-    EnterCriticalSection(&lock);
-    changelog = String::format("Current version: %s\r\n\r\nUnable to contact server.",
-      formatVersion(thisVersion));
-    LeaveCriticalSection(&lock);
-  }
-  else
-  {
-    lastVersion = parseVersion(text);
-    if (lastVersion > thisVersion)
-    {
-      String log = "";
-      File* logFile = File::openURL(logURL);
-      if (logFile)
-      {
-        String line;
-        while (logFile->gets(line))
-        {
-          line.removeTrailingSpaces();
-          if (line.substring(0, 2) == "**")
-          {
-            int end = 2;
-            while (end < line.length() && line[end] != '*' && !s_isspace(line[end]))
-              end++;
-            uint32 ver = parseVersion(line.substring(2, end));
-            if (ver != 0 && ver <= thisVersion)
-              break;
-          }
-          log += line;
-          log += "\r\n";
-        }
-        delete logFile;
-      }
+	File* verFile = File::openURL(versionURL);
+	String text = "";
+	if (verFile)
+	{
+		text = verFile->gets();
+		delete verFile;
+	}
+	if (text.isEmpty())
+	{
+		EnterCriticalSection(&lock);
+		changelog = String::format("Current version: %s\r\n\r\nUnable to contact server.",
+			formatVersion(thisVersion));
+		LeaveCriticalSection(&lock);
+	}
+	else
+	{
+		lastVersion = parseVersion(text);
+		if (lastVersion > thisVersion)
+		{
+			String log = "";
+			File* logFile = File::openURL(logURL);
+			if (logFile)
+			{
+				String line;
+				while (logFile->gets(line))
+				{
+					line.removeTrailingSpaces();
+					if (line.substring(0, 2) == "**")
+					{
+						int end = 2;
+						while (end < line.length() && line[end] != '*' && !s_isspace(line[end]))
+							end++;
+						uint32 ver = parseVersion(line.substring(2, end));
+						if (ver != 0 && ver <= thisVersion)
+							break;
+					}
+					log += line;
+					log += "\r\n";
+				}
+				delete logFile;
+			}
 
-      EnterCriticalSection(&lock);
-      changelog = String::format("Current version: %s\r\nLatest version: %s\r\n\r\nChangelog:\r\n%s",
-        formatVersion(thisVersion), formatVersion(lastVersion), log);
-      LeaveCriticalSection(&lock);
-    }
-    else
-    {
-      EnterCriticalSection(&lock);
-      changelog = String::format("Current version: %s\r\n\r\nUp to date.",
-        formatVersion(thisVersion));
-      LeaveCriticalSection(&lock);
-    }
-  }
-  EnterCriticalSection(&lock);
-  if (instance)
-  {
-    cfg.lastVersionNotify = lastVersion;
-    PostMessage(instance, WM_UPDATEVERSION, 0, 0);
-  }
-  if (lastVersion > cfg.lastVersionNotify)
-  {
-    cfg.lastVersionNotify = lastVersion;
-    PostMessage(getApp()->getMainWindow(), WM_UPDATEVERSION, 0, 0);
-  }
-  LeaveCriticalSection(&lock);
-  return 0;
+			EnterCriticalSection(&lock);
+			changelog = String::format("Current version: %s\r\nLatest version: %s\r\n\r\nChangelog:\r\n%s",
+				formatVersion(thisVersion), formatVersion(lastVersion), log);
+			LeaveCriticalSection(&lock);
+		}
+		else
+		{
+			EnterCriticalSection(&lock);
+			changelog = String::format("Current version: %s\r\n\r\nUp to date.",
+				formatVersion(thisVersion));
+			LeaveCriticalSection(&lock);
+		}
+	}
+	EnterCriticalSection(&lock);
+	if (instance)
+	{
+		cfg.lastVersionNotify = lastVersion;
+		PostMessage(instance, WM_UPDATEVERSION, 0, 0);
+	}
+	if (lastVersion > cfg.lastVersionNotify)
+	{
+		cfg.lastVersionNotify = lastVersion;
+		PostMessage(getApp()->getMainWindow(), WM_UPDATEVERSION, 0, 0);
+	}
+	LeaveCriticalSection(&lock);
+	return 0;
 }
 
 void UpdateDialog::init(HINSTANCE hInstance)
 {
-  InitializeCriticalSection(&lock);
+	InitializeCriticalSection(&lock);
+	//改用新的方法获取版本信息，废弃原有的不规范的方法
+	char file[MAX_PATH] = {0};
+	int len = GetModuleFileName(NULL, file,MAX_PATH);
+	if(len <= 0)
+	{
+		MessageBox(NULL, "获取程序路径失败！", "错误", MB_OK | MB_ICONWARNING);
+		return;
+	}
 
-  HRSRC hVersion = FindResource(hInstance, MAKEINTRESOURCE(VS_VERSION_INFO),
-    RT_VERSION);
-  if (hVersion == NULL)
-    return;
-  HGLOBAL hGlobal = LoadResource(hInstance, hVersion);
-  if (hGlobal == NULL)
-    return;
-  DWORD dwSize = SizeofResource(hInstance, hVersion);
-  void* versionInfo = LockResource(hGlobal);
-  void* temp = LocalAlloc(LMEM_FIXED, dwSize);
-  CopyMemory(temp, versionInfo, dwSize);
-  FreeResource(hGlobal);
-  versionInfo = temp;
+	//获取文件版本信息
+	len = GetFileVersionInfoSize(file, NULL);
+	if(len <= 0)
+	{
+		MessageBox(NULL, "获取版本信息大小失败！", "错误", MB_OK | MB_ICONWARNING);
+		return;
+	}
+	char* versionInfo = new char[len + 1];
+	if(GetFileVersionInfo(file, NULL, 4096, versionInfo) == FALSE)
+	{
+		MessageBox(NULL, "获取版本信息失败！", "错误", MB_OK | MB_ICONWARNING);
+		return;
+	}
 
-  if (versionInfo)
-  {
-    UINT vLen;
-    void* buf;
-    String entry = "\\StringFileInfo\\";
-    if (VerQueryValue(versionInfo, "\\VarFileInfo\\Translation", &buf, &vLen) && vLen == 4)
-      entry.printf("%04x%04x\\", *(int*) buf & 0xFFFF, (*(int*) buf >> 16) & 0xFFFF);
-    else
-      entry.printf("%04x04b0\\", GetUserDefaultLangID());
+	UINT vLen;
+	void* buf;
+	String entry = "\\StringFileInfo\\";
+	if (VerQueryValue(versionInfo, "\\VarFileInfo\\Translation", &buf, &vLen) && vLen == 4)
+		entry.printf("%04X%04X\\", *(int*) buf & 0xFFFF, (*(int*) buf >> 16) & 0xFFFF);
+	else
+		entry.printf("%04X04B0\\", GetUserDefaultLangID());
 
-    if (VerQueryValue(versionInfo, entry + "ProductVersion", &buf, &vLen))
-    {
-      thisVersion = parseVersion((char*) buf);
-      lastVersion = thisVersion;
-    }
-  }
+	if (VerQueryValue(versionInfo, entry + "ProductVersion", &buf, &vLen))
+	{
+		thisVersion = parseVersion((char*) buf);
+		lastVersion = thisVersion;
+	}
+	
+	delete versionInfo;
 
-  LocalFree(temp);
+
+	/* 废弃原有的不规范的方法
+	HRSRC hVersion = FindResource(hInstance, MAKEINTRESOURCE(VS_VERSION_INFO),RT_VERSION);
+	if (hVersion == NULL)
+		return;
+	HGLOBAL hGlobal = LoadResource(hInstance, hVersion);
+	if (hGlobal == NULL)
+		return;
+	void* versionInfo = LockResource(hGlobal);
+	if (versionInfo)
+	{
+		UINT vLen;
+		void* buf;
+		String entry = "\\StringFileInfo\\";
+		if (VerQueryValue(versionInfo, "\\VarFileInfo\\Translation", &buf, &vLen) && vLen == 4)
+			entry.printf("%04X%04X\\", *(int*) buf & 0xFFFF, (*(int*) buf >> 16) & 0xFFFF);
+		else
+			entry.printf("%04X04B0\\", GetUserDefaultLangID());
+
+		if (VerQueryValue(versionInfo, entry + "ProductVersion", &buf, &vLen))
+		{
+			thisVersion = parseVersion((char*) buf);
+			lastVersion = thisVersion;
+		}
+	}
+	FreeResource(hGlobal);
+	*/
 }
 void UpdateDialog::check(bool force)
 {
-  if (force || (cfg.autoUpdate && sysTime() - cfg.lastVersionCheck > 2 * 3600))
-  {
-    EnterCriticalSection(&lock);
-    changelog = "Loading...";
-    LeaveCriticalSection(&lock);
-    cfg.lastVersionCheck = sysTime();
-    DWORD id;
-    HANDLE thread = CreateThread(NULL, 0, ThreadProc, NULL, 0, &id);
-    if (thread)
-      CloseHandle(thread);
-  }
+	if (force || (cfg.autoUpdate && sysTime() - cfg.lastVersionCheck > 2 * 3600))
+	{
+		EnterCriticalSection(&lock);
+		changelog = "Loading...";
+		LeaveCriticalSection(&lock);
+		cfg.lastVersionCheck = sysTime();
+		DWORD id;
+		HANDLE thread = CreateThread(NULL, 0, ThreadProc, NULL, 0, &id);
+		if (thread)
+			CloseHandle(thread);
+	}
 }
 int UpdateDialog::run()
 {
-  if (instance)
-    return IDOK;
-  return DialogBox(getInstance(), MAKEINTRESOURCE(IDD_UPDATEDLG),
-    getApp()->getMainWindow(), DlgProc);
+	if (instance)
+		return IDOK;
+	return DialogBox(getInstance(), MAKEINTRESOURCE(IDD_UPDATEDLG),
+		getApp()->getMainWindow(), DlgProc);
 }

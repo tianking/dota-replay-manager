@@ -5,6 +5,7 @@
 
 static const char mutexId[] = "DotaReplayMutex-7e30e6f8-87ce-4f61-a5c4-1de3e8983fba";
 static const char mapId[] = "DotaReplayMap-7e30e6f8-87ce-4f61-a5c4-1de3e8983fba";
+Application* pApp = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -50,6 +51,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   if (hMutex)
     ReleaseMutex(hMutex);
 
+  pApp = &app;
   int result = app.run();
 
   if (mapView)

@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AF45FE07-EA3D-41C8-A8B4-817756A95CC2}</ProjectGuid>
+    <RootNamespace>DotAReplay</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\debug\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\release\obj\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\lib;..\src;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>zlib.lib;jpeg.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\lib;..\src;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>zlib_r.lib;jpeg.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\core\app.h" />
+    <ClInclude Include="..\src\core\cfgitems.h" />
+    <ClInclude Include="..\src\core\registry.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\src\base\array.h" />
+    <ClInclude Include="..\src\base\dictionary.h" />
+    <ClInclude Include="..\src\base\file.h" />
+    <ClInclude Include="..\src\base\gzmemory.h" />
+    <ClInclude Include="..\src\base\intdict.h" />
+    <ClInclude Include="..\src\base\mpqfile.h" />
+    <ClInclude Include="..\src\base\object.h" />
+    <ClInclude Include="..\src\base\pool.h" />
+    <ClInclude Include="..\src\base\regexp.h" />
+    <ClInclude Include="..\src\base\string.h" />
+    <ClInclude Include="..\src\base\types.h" />
+    <ClInclude Include="..\src\base\utf8.h" />
+    <ClInclude Include="..\src\base\utils.h" />
+    <ClInclude Include="..\src\base\version.h" />
+    <ClInclude Include="..\src\graphics\glib.h" />
+    <ClInclude Include="..\src\graphics\image.h" />
+    <ClInclude Include="..\src\graphics\imagelib.h" />
+    <ClInclude Include="..\src\graphics\rect.h" />
+    <ClInclude Include="..\src\frameui\controlframes.h" />
+    <ClInclude Include="..\src\frameui\dragdrop.h" />
+    <ClInclude Include="..\src\frameui\fontsys.h" />
+    <ClInclude Include="..\src\frameui\frame.h" />
+    <ClInclude Include="..\src\frameui\framewnd.h" />
+    <ClInclude Include="..\src\frameui\graphwnd.h" />
+    <ClInclude Include="..\src\frameui\listctrl.h" />
+    <ClInclude Include="..\src\frameui\simpledlg.h" />
+    <ClInclude Include="..\src\frameui\window.h" />
+    <ClInclude Include="..\src\ui\aboutdlg.h" />
+    <ClInclude Include="..\src\ui\batchdlg.h" />
+    <ClInclude Include="..\src\ui\dirchange.h" />
+    <ClInclude Include="..\src\ui\folderwnd.h" />
+    <ClInclude Include="..\src\ui\herochart.h" />
+    <ClInclude Include="..\src\ui\mainwnd.h" />
+    <ClInclude Include="..\src\ui\replaytree.h" />
+    <ClInclude Include="..\src\ui\replaywnd.h" />
+    <ClInclude Include="..\src\ui\searchres.h" />
+    <ClInclude Include="..\src\ui\searchwnd.h" />
+    <ClInclude Include="..\src\ui\settingswnd.h" />
+    <ClInclude Include="..\src\ui\updatedlg.h" />
+    <ClInclude Include="..\src\ui\viewitem.h" />
+    <ClInclude Include="..\src\ui\replay\actionlog.h" />
+    <ClInclude Include="..\src\ui\replay\actions.h" />
+    <ClInclude Include="..\src\ui\replay\draft.h" />
+    <ClInclude Include="..\src\ui\replay\gamechat.h" />
+    <ClInclude Include="..\src\ui\replay\gameinfo.h" />
+    <ClInclude Include="..\src\ui\replay\playerexp.h" />
+    <ClInclude Include="..\src\ui\replay\playergold.h" />
+    <ClInclude Include="..\src\ui\replay\playerinfo.h" />
+    <ClInclude Include="..\src\ui\replay\present.h" />
+    <ClInclude Include="..\src\ui\replay\timelinewnd.h" />
+    <ClInclude Include="..\src\dota\buildings.h" />
+    <ClInclude Include="..\src\dota\colors.h" />
+    <ClInclude Include="..\src\dota\consts.h" />
+    <ClInclude Include="..\src\dota\dotadata.h" />
+    <ClInclude Include="..\src\dota\mapdata.h" />
+    <ClInclude Include="..\src\dota\load\datafile.h" />
+    <ClInclude Include="..\src\replay\action.h" />
+    <ClInclude Include="..\src\replay\actiondump.h" />
+    <ClInclude Include="..\src\replay\cache.h" />
+    <ClInclude Include="..\src\replay\consts.h" />
+    <ClInclude Include="..\src\replay\hero.h" />
+    <ClInclude Include="..\src\replay\inventory.h" />
+    <ClInclude Include="..\src\replay\message.h" />
+    <ClInclude Include="..\src\replay\orders.h" />
+    <ClInclude Include="..\src\replay\player.h" />
+    <ClInclude Include="..\src\replay\replay.h" />
+    <ClInclude Include="..\src\replay\timeline.h" />
+    <ClInclude Include="..\src\rmpq\huffman.h" />
+    <ClInclude Include="..\src\rmpq\mpqcompress.h" />
+    <ClInclude Include="..\src\rmpq\mpqsync.h" />
+    <ClInclude Include="..\src\rmpq\pklib.h" />
+    <ClInclude Include="..\src\rmpq\rmpq.h" />
+    <ClInclude Include="..\src\rmpq\wave.h" />
+    <CustomBuildStep Include="..\old_src\ActionLogDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\ActionsDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\BatchDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\ChatFilters.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\colorlist.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\datafile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\dictobj.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\dota.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\dotaload.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\DotAReplay.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\DotAReplayDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\DraftDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\gamecache.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\GameInfoDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\GetDataDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\glib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\HeroChart.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\ilib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\image.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\jcore.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\jparse.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\jstring.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\LocManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\mapdata.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\MetaData.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\mpqcompress.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\NewPresentDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\olddota.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\orders.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\PlayerExpDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\PlayerGoldDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\PlayerInfoDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\PlayerStatsDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\PresentDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\registry.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\replay.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\resource.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\rmpq.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\ScreenshotDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\ScriptWnd.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\SearchDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\SettingsDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\sparser.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\stdafx.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\strobj.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\systray.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\TagEditorDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\TimelineDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\TimePicture.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\types.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\UpdateDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\utils.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\views.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\war3parse.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\old_src\WorkshopDlg.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+    <ClInclude Include="..\src\script\data.h" />
+    <ClInclude Include="..\src\script\editor.h" />
+    <ClInclude Include="..\src\script\parser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\core\app.cpp" />
+    <ClCompile Include="..\src\core\main.cpp" />
+    <ClCompile Include="..\src\core\registry.cpp" />
+    <ClCompile Include="..\src\base\dictionary.cpp" />
+    <ClCompile Include="..\src\base\file.cpp" />
+    <ClCompile Include="..\src\base\gzmemory.cpp" />
+    <ClCompile Include="..\src\base\intdict.cpp" />
+    <ClCompile Include="..\src\base\mpqfile.cpp" />
+    <ClCompile Include="..\src\base\openurl.cpp" />
+    <ClCompile Include="..\src\base\pool.cpp" />
+    <ClCompile Include="..\src\base\regexp.cpp" />
+    <ClCompile Include="..\src\base\string.cpp" />
+    <ClCompile Include="..\src\base\utf8.cpp" />
+    <ClCompile Include="..\src\base\utils.cpp" />
+    <ClCompile Include="..\src\base\version.cpp" />
+    <ClCompile Include="..\src\graphics\glib.cpp" />
+    <ClCompile Include="..\src\graphics\image.cpp" />
+    <ClCompile Include="..\src\graphics\imagelib.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadbin.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadblp.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadblp2.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadgif.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadpng.cpp" />
+    <ClCompile Include="..\src\graphics\loaders\loadtga.cpp" />
+    <ClCompile Include="..\src\frameui\controlframes.cpp" />
+    <ClCompile Include="..\src\frameui\dragdrop.cpp" />
+    <ClCompile Include="..\src\frameui\fontsys.cpp" />
+    <ClCompile Include="..\src\frameui\frame.cpp" />
+    <ClCompile Include="..\src\frameui\framewnd.cpp" />
+    <ClCompile Include="..\src\frameui\graphwnd.cpp" />
+    <ClCompile Include="..\src\frameui\listctrl.cpp" />
+    <ClCompile Include="..\src\frameui\simpledlg.cpp" />
+    <ClCompile Include="..\src\frameui\window.cpp" />
+    <ClCompile Include="..\src\ui\aboutdlg.cpp" />
+    <ClCompile Include="..\src\ui\batchdlg.cpp" />
+    <ClCompile Include="..\src\ui\dirchange.cpp" />
+    <ClCompile Include="..\src\ui\folderwnd.cpp" />
+    <ClCompile Include="..\src\ui\folderwndfill.cpp" />
+    <ClCompile Include="..\src\ui\herochart.cpp" />
+    <ClCompile Include="..\src\ui\mainwnd.cpp" />
+    <ClCompile Include="..\src\ui\replaytree.cpp" />
+    <ClCompile Include="..\src\ui\replaytreefill.cpp" />
+    <ClCompile Include="..\src\ui\replaywnd.cpp" />
+    <ClCompile Include="..\src\ui\searchres.cpp" />
+    <ClCompile Include="..\src\ui\searchwnd.cpp" />
+    <ClCompile Include="..\src\ui\settingitems.cpp" />
+    <ClCompile Include="..\src\ui\settingswnd.cpp" />
+    <ClCompile Include="..\src\ui\updatedlg.cpp" />
+    <ClCompile Include="..\src\ui\viewitem.cpp" />
+    <ClCompile Include="..\src\ui\replay\actionlog.cpp" />
+    <ClCompile Include="..\src\ui\replay\actions.cpp" />
+    <ClCompile Include="..\src\ui\replay\chatfilters.cpp" />
+    <ClCompile Include="..\src\ui\replay\draft.cpp" />
+    <ClCompile Include="..\src\ui\replay\gamechat.cpp" />
+    <ClCompile Include="..\src\ui\replay\gameinfo.cpp" />
+    <ClCompile Include="..\src\ui\replay\playerexp.cpp" />
+    <ClCompile Include="..\src\ui\replay\playergold.cpp" />
+    <ClCompile Include="..\src\ui\replay\playerinfo.cpp" />
+    <ClCompile Include="..\src\ui\replay\present.cpp" />
+    <ClCompile Include="..\src\ui\replay\scriptgen.cpp" />
+    <ClCompile Include="..\src\ui\replay\timelinewnd.cpp" />
+    <ClCompile Include="..\src\dota\buildings.cpp" />
+    <ClCompile Include="..\src\dota\colors.cpp" />
+    <ClCompile Include="..\src\dota\dotaconsts.cpp" />
+    <ClCompile Include="..\src\dota\dotadata.cpp" />
+    <ClCompile Include="..\src\dota\mapdata.cpp" />
+    <ClCompile Include="..\src\dota\load\datafile.cpp" />
+    <ClCompile Include="..\src\dota\load\dotaload.cpp" />
+    <ClCompile Include="..\src\replay\action.cpp" />
+    <ClCompile Include="..\src\replay\actiondump.cpp" />
+    <ClCompile Include="..\src\replay\cache.cpp" />
+    <ClCompile Include="..\src\replay\hero.cpp" />
+    <ClCompile Include="..\src\replay\inventory.cpp" />
+    <ClCompile Include="..\src\replay\orders.cpp" />
+    <ClCompile Include="..\src\replay\player.cpp" />
+    <ClCompile Include="..\src\replay\replay.cpp" />
+    <ClCompile Include="..\src\replay\replayconsts.cpp" />
+    <ClCompile Include="..\src\replay\replayparser.cpp" />
+    <ClCompile Include="..\src\replay\timeline.cpp" />
+    <ClCompile Include="..\src\rmpq\explode.c" />
+    <ClCompile Include="..\src\rmpq\filesys.cpp" />
+    <ClCompile Include="..\src\rmpq\huffman.cpp" />
+    <ClCompile Include="..\src\rmpq\implode.c" />
+    <ClCompile Include="..\src\rmpq\mpqcompress.cpp" />
+    <ClCompile Include="..\src\rmpq\rmpq.cpp" />
+    <ClCompile Include="..\src\rmpq\wave.cpp" />
+    <ClCompile Include="..\src\script\data.cpp" />
+    <ClCompile Include="..\src\script\editor.cpp" />
+    <ClCompile Include="..\src\script\scripteval.cpp" />
+    <ClCompile Include="..\src\script\scriptparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DotAReplay.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\res\hmove.cur" />
+    <None Include="..\res\idr_main.ico" />
+    <None Include="..\res\play.ico" />
+    <None Include="..\res\sentinel.cur" />
+    <None Include="..\res\vsplit.cur" />
+    <None Include="..\res\zoom_out.cur" />
+    <None Include="..\res\zoomin.cur" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

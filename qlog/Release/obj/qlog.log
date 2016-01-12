@@ -1,0 +1,54 @@
+﻿生成启动时间为 2016/1/6 10:51:41。
+     1>项目“D:\program\CPP\2010\DotAReplay\qlog\vc10\qlog.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“..\Release\obj\qlog.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../src /I../lib /Zi /nologo /W2 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\Release\obj\\" /Fd"..\Release\obj\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\action.cpp ..\src\actiondump.cpp ..\src\base\argparser.cpp ..\src\base\dictionary.cpp ..\src\base\file.cpp ..\src\base\gzmemory.cpp ..\src\base\intdict.cpp ..\src\base\openurl.cpp ..\src\base\pool.cpp ..\src\base\regexp.cpp ..\src\base\string.cpp ..\src\base\utf8.cpp ..\src\base\utils.cpp ..\src\base\version.cpp ..\src\main.cpp ..\src\orders.cpp ..\src\replay.cpp
+         action.cpp
+         actiondump.cpp
+         argparser.cpp
+         dictionary.cpp
+         file.cpp
+         gzmemory.cpp
+         intdict.cpp
+         openurl.cpp
+         pool.cpp
+         regexp.cpp
+         string.cpp
+         utf8.cpp
+         utils.cpp
+         version.cpp
+         main.cpp
+         orders.cpp
+         replay.cpp
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\Release\qlog.exe" /INCREMENTAL:NO /NOLOGO ../lib/zlib_r.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:"..\Release\obj\qlog.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\program\CPP\2010\DotAReplay\qlog\Release\qlog.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\Release\qlog.lib" /MACHINE:X86 ..\Release\obj\action.obj
+         ..\Release\obj\actiondump.obj
+         ..\Release\obj\argparser.obj
+         ..\Release\obj\dictionary.obj
+         ..\Release\obj\file.obj
+         ..\Release\obj\gzmemory.obj
+         ..\Release\obj\intdict.obj
+         ..\Release\obj\openurl.obj
+         ..\Release\obj\pool.obj
+         ..\Release\obj\regexp.obj
+         ..\Release\obj\string.obj
+         ..\Release\obj\utf8.obj
+         ..\Release\obj\utils.obj
+         ..\Release\obj\version.obj
+         ..\Release\obj\main.obj
+         ..\Release\obj\orders.obj
+         ..\Release\obj\replay.obj
+         正在生成代码
+         已完成代码的生成
+         qlog.vcxproj -> D:\program\CPP\2010\DotAReplay\qlog\vc10\..\Release\qlog.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\Release\qlog.exe;#1" /manifest ..\Release\obj\qlog.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“..\Release\obj\qlog.unsuccessfulbuild”。
+         正在对“..\Release\obj\qlog.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\program\CPP\2010\DotAReplay\qlog\vc10\qlog.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.60

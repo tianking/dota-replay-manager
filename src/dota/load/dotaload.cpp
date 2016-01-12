@@ -91,8 +91,8 @@ class DotaLoader
 
   struct Recipe
   {
-    int src[32];
-    int srccount[32];
+    int src[16];
+    int srccount[16];
     int numSrc;
     int recipe;
     int result;
@@ -218,7 +218,8 @@ class DotaLoader
 
   struct Ability
   {
-    Array<uint32> ids;
+    uint32 ids[16];
+    int numIds;
     String name;
     String icon;
     uint32 hero;
@@ -233,7 +234,8 @@ class DotaLoader
   uint32 addAbility(UnitData* abil)
   {
     Ability& a = abilities.push();
-    a.ids.push(abil->getID());
+    a.ids[0] = abil->getID();
+    a.numIds = 1;
     a.name = abil->getStringData("Name");
     String art = abil->getStringData("ResearchArt");
     if (art.isEmpty())
@@ -269,12 +271,14 @@ class DotaLoader
           uint32 abil = adir.get(src);
           Ability& a = abilities[abil];
           bool has = false;
-          for (int i = 0; i < a.ids.length(); i++)
+          for (int i = 0; i < a.numIds; i++)
             if (a.ids[i] == dst)
               has = true;
           if (!has)
           {
-            a.ids.push(dst);
+            if (a.numIds > 10)
+              int adsf = 0;
+            a.ids[a.numIds++] = dst;
             adir.set(dst, abil);
           }
         }
@@ -293,13 +297,17 @@ class DotaLoader
         if (hdir.has(src) && !hdir.has(dst))
         {
           int srch = hdir.get(src);
-          heroes[srch].ids.push(dst);
+          if (heroes[srch].numIds > 10)
+            int asdf = 0;
+          heroes[srch].ids[heroes[srch].numIds++] = dst;
           hdir.set(dst, srch);
         }
         else if (!hdir.has(src) && hdir.has(dst))
         {
           int dsth = hdir.get(dst);
-          heroes[dsth].ids.push(dst);
+          if (heroes[dsth].numIds > 10)
+            int asdf = 0;
+          heroes[dsth].ids[heroes[dsth].numIds++] = src;
           hdir.set(src, dsth);
         }
       }
@@ -311,7 +319,8 @@ class DotaLoader
   struct Hero
   {
     int tavern;
-    Array<uint32> ids;
+    uint32 ids[16];
+    int numIds;
     String name;
     String properName;
     String icon;
@@ -364,7 +373,8 @@ class DotaLoader
   {
     Hero& h = heroes.push();
     h.tavern = tavern;
-    h.ids.push(hero->getID());
+    h.ids[0] = hero->getID();
+    h.numIds = 1;
     h.slot = hero->getStringData("Buttonpos", 0).toInt() +
          4 * hero->getStringData("Buttonpos", 1).toInt();
     h.point = patchPoint(hero->getStringData("points").toInt());
@@ -735,7 +745,7 @@ public:
         else
           file->printf(",");
       }
-      for (int j = 0; j < h.ids.length(); j++)
+      for (int j = 0; j < h.numIds; j++)
         file->printf(",%s", idToString(h.ids[j]));
       file->printf("\r\n");
     }
@@ -755,7 +765,7 @@ public:
     {
       Ability& a = abilities[i];
       file->printf("\"%s\",%d,\"%s\",%d,%d,%d", a.name, a.slot, a.icon, a.lvlReq, a.lvlSkip, a.lvlMax);
-      for (int j = 0; j < a.ids.length(); j++)
+      for (int j = 0; j < a.numIds; j++)
         file->printf(",%s", idToString(a.ids[j]));
       file->printf("\r\n");
     }

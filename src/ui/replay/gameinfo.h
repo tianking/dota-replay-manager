@@ -21,7 +21,7 @@ class ReplayGameInfoTab : public ReplayTab
 {
   void addInfo(String name, String value, bool utf8 = false);
   SimpleListFrame* info;
-  ListFrame* players;
+  ListFrame* listPlayers;
   ButtonFrame* watchReplay;
   ButtonFrame* copyMatchup;
   StaticFrame* map;
